@@ -216,7 +216,9 @@ export const Controls = (props: {
 
   const changeEncoderConfig = async () => {
     console.log("========= Changing Encoder Type ========");
+    // @ts-ignore
     await client.localTracks[0].setEncoderConfiguration("120p");
+    // @ts-ignore
     await client.localTracks[1].setEncoderConfiguration("120p");
     console.log("========= Changed Encoder Type ========");
   };
