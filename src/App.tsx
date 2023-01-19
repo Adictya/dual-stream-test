@@ -214,6 +214,13 @@ export const Controls = (props: {
     console.log("========= Switched Stream Type ========");
   };
 
+  const changeEncoderConfig = async () => {
+    console.log("========= Changing Encoder Type ========");
+    await client.localTracks[0].setEncoderConfiguration("120p");
+    await client.localTracks[1].setEncoderConfiguration("120p");
+    console.log("========= Changed Encoder Type ========");
+  };
+
   return (
     <div className="controls">
       <p className={trackState.audio ? "on" : ""} onClick={() => mute("audio")}>
@@ -230,6 +237,12 @@ export const Controls = (props: {
       </p>
       <p className={trackState.video ? "on" : ""} onClick={() => switchType()}>
         Toggle RemoteStreamType
+      </p>
+      <p
+        className={trackState.video ? "on" : ""}
+        onClick={() => changeEncoderConfig()}
+      >
+        Change encoder config to 120p
       </p>
       {<p onClick={() => leaveChannel()}>Leave</p>}
     </div>
